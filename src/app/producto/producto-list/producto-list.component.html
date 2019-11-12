@@ -1,0 +1,13 @@
+<ion-grid>
+  <ion-row>
+    <ion-col
+      *ngFor="let producto of productos"
+      class="ion-no-padding"
+      size="6"
+      size-sm
+      (click)="onClickProducto(producto)"
+    >
+      <app-producto-card [producto]="producto"></app-producto-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
