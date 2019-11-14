@@ -1,5 +1,10 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="onClose()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>
       Detalle
     </ion-title>
@@ -20,15 +25,15 @@
         <ion-row class="ion-align-items-center">
           <ion-col size="4" class="ion-no-padding"><p>Cantidad</p></ion-col>
           <ion-col size="3">
-            <ion-button size="small">
+            <ion-button size="small" (click)="agregarItem()">
               <ion-icon slot="icon-only" name="add"></ion-icon>
             </ion-button>
           </ion-col>
           <ion-col size="2">
-            <p style="text-align: center;">1</p>
+            <p style="text-align: center;">{{ cantidad }}</p>
           </ion-col>
           <ion-col size="3">
-            <ion-button size="small">
+            <ion-button size="small" (click)="quitarItem()">
               <ion-icon slot="icon-only" name="remove"></ion-icon>
             </ion-button>
           </ion-col>
@@ -36,8 +41,8 @@
       </ion-grid>
       <p>{{ producto.descripcion }}</p>
     </ion-card-content>
-    <ion-button expand="full" color="danger"
-      >Agregar a carrito <ion-icon slot="icon-only" name="cart"></ion-icon
+    <ion-button expand="full" color="danger" (click)="agregarAlCarrito()"
+      >Agregar al carrito <ion-icon slot="icon-only" name="cart"></ion-icon
     ></ion-button>
   </ion-card>
 </ion-content>

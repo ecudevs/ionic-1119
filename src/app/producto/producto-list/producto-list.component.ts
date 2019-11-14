@@ -14,6 +14,7 @@ export class ProductoListComponent implements OnInit {
   ngOnInit() {}
 
   onClickProducto(producto) {
+    debugger;
     this.productoClick.next(producto);
   }
 }

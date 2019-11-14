@@ -19,6 +19,7 @@ export class Tab1Page {
         "https://images-na.ssl-images-amazon.com/images/I/41cRjgok0ML.jpg"
       ],
       precio: 219.99,
+      stock: 5,
       feCreacion: new Date()
     },
     {
@@ -35,6 +36,7 @@ export class Tab1Page {
         "https://images-na.ssl-images-amazon.com/images/I/61gbjA4r5ZL._SL1000_.jpg"
       ],
       precio: 34.99,
+      stock: 10,
       feCreacion: new Date()
     },
     {
@@ -51,9 +53,14 @@ export class Tab1Page {
         "https://images-na.ssl-images-amazon.com/images/I/81LoEmP6IyL._SL1500_.jpg"
       ],
       precio: 699.0,
+      stock: 25,
       feCreacion: new Date()
     }
   ];
+
+  carrito: any = [];
+
+  cantidadItems = 0;
 
   constructor(public modalController: ModalController) {}
 
@@ -62,6 +69,18 @@ export class Tab1Page {
       component: ProductoDetalleComponent,
       componentProps: { producto: producto }
     });
-    return await modal.present();
+    await modal.present();
+    const { data } = await modal.onWillDismiss();
+
+    if (data) {
+      this.carrito.push(data);
+
+      let cantidad = 0;
+      this.carrito.forEach(producto => {
+        cantidad += producto.cantidad;
+      });
+
+      this.cantidadItems = cantidad;
+    }
   }
 }
