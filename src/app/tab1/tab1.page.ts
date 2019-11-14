@@ -18,7 +18,7 @@ export class Tab1Page {
         "https://images-na.ssl-images-amazon.com/images/I/81%2BF83td0DL._SL1500_.jpg",
         "https://images-na.ssl-images-amazon.com/images/I/41cRjgok0ML.jpg"
       ],
-      precio: 219.99,
+      precio: 219.999,
       stock: 5,
       feCreacion: new Date()
     },
@@ -58,11 +58,26 @@ export class Tab1Page {
     }
   ];
 
+  productosFiltrados = [];
+
   carrito: any = [];
 
   cantidadItems = 0;
 
-  constructor(public modalController: ModalController) {}
+  constructor(public modalController: ModalController) {
+    this.productosFiltrados = this.productos;
+  }
+
+  filtrar(e) {
+    let valorAEncontrar = e.detail.value;
+    this.productosFiltrados = this.productos.filter(itemProducto => {
+      return (
+        itemProducto.producto
+          .toLowerCase()
+          .indexOf(valorAEncontrar.toLowerCase()) != -1
+      );
+    });
+  }
 
   async openDetailInfo(producto) {
     const modal = await this.modalController.create({
@@ -74,13 +89,16 @@ export class Tab1Page {
 
     if (data) {
       this.carrito.push(data);
-
-      let cantidad = 0;
-      this.carrito.forEach(producto => {
-        cantidad += producto.cantidad;
-      });
-
-      this.cantidadItems = cantidad;
+      this.contarItems();
     }
+  }
+
+  contarItems() {
+    let cantidad = 0;
+    this.carrito.forEach(producto => {
+      cantidad += producto.cantidad;
+    });
+
+    this.cantidadItems = cantidad;
   }
 }

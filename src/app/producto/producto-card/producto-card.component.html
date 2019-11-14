@@ -1,7 +1,9 @@
 <ion-card class="card ion-no-margin">
   <img [src]="producto.fotos[0]" alt="" />
   <ion-card-header class="header">
-    <ion-card-subtitle>{{ producto.precio }}</ion-card-subtitle>
+    <ion-card-subtitle>{{
+      producto.precio | currency: "USD"
+    }}</ion-card-subtitle>
     <ion-card-title class="titulo">{{ producto.producto }}</ion-card-title>
   </ion-card-header>
 </ion-card>

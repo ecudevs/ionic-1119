@@ -17,7 +17,9 @@
         <img [src]="foto" /> </ion-slide
     ></ion-slides>
     <ion-card-header class="header">
-      <ion-card-subtitle>{{ producto.precio }}</ion-card-subtitle>
+      <ion-card-subtitle>{{
+        producto.precio | currency: "USD"
+      }}</ion-card-subtitle>
       <ion-card-title class="titulo">{{ producto.producto }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
@@ -40,6 +42,7 @@
         </ion-row>
       </ion-grid>
       <p>{{ producto.descripcion }}</p>
+      <!-- <p>{{ producto.feCreacion | date: "dd/MM/yyyy" }}</p> -->
     </ion-card-content>
     <ion-button expand="full" color="danger" (click)="agregarAlCarrito()"
       >Agregar al carrito <ion-icon slot="icon-only" name="cart"></ion-icon

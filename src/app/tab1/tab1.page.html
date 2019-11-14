@@ -9,12 +9,14 @@
 <ion-content>
   <!-- <app-producto-card></app-producto-card> -->
   <!-- <app-producto-detalle></app-producto-detalle> -->
+  <ion-searchbar (ionChange)="filtrar($event)"></ion-searchbar>
   <app-producto-list
     (productoClick)="openDetailInfo($event)"
-    [productos]="productos"
+    [productos]="productosFiltrados"
   ></app-producto-list>
 </ion-content>
-<ion-footer>
+<!-- *ngIf="cantidadItems>0" -->
+<ion-footer *ngIf="cantidadItems>0">
   <ion-toolbar>
     <ion-title>Items {{cantidadItems}}</ion-title>
   </ion-toolbar>
