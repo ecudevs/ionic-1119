@@ -7,6 +7,7 @@ import { Tab1Page } from "./tab1.page";
 import { ProductoCardComponent } from "../producto/producto-card/producto-card.component";
 import { ProductoListComponent } from "../producto/producto-list/producto-list.component";
 import { ProductoDetalleComponent } from "../producto/producto-detalle/producto-detalle.component";
+import { CarritoComponent } from "../producto/carrito/carrito.component";
 
 @NgModule({
   imports: [
@@ -19,8 +20,9 @@ import { ProductoDetalleComponent } from "../producto/producto-detalle/producto-
     Tab1Page,
     ProductoCardComponent,
     ProductoListComponent,
-    ProductoDetalleComponent
+    ProductoDetalleComponent,
+    CarritoComponent
   ],
-  entryComponents: [ProductoDetalleComponent]
+  entryComponents: [ProductoDetalleComponent, CarritoComponent]
 })
 export class Tab1PageModule {}

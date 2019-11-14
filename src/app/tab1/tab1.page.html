@@ -16,7 +16,7 @@
   ></app-producto-list>
 </ion-content>
 <!-- *ngIf="cantidadItems>0" -->
-<ion-footer *ngIf="cantidadItems>0">
+<ion-footer *ngIf="cantidadItems>0" (click)="openCarrito()">
   <ion-toolbar>
     <ion-title>Items {{cantidadItems}}</ion-title>
   </ion-toolbar>

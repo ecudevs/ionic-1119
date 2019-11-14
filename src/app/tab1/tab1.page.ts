@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { ProductoDetalleComponent } from "../producto/producto-detalle/producto-detalle.component";
+import { CarritoComponent } from "../producto/carrito/carrito.component";
 
 @Component({
   selector: "app-tab1",
@@ -91,6 +92,14 @@ export class Tab1Page {
       this.carrito.push(data);
       this.contarItems();
     }
+  }
+
+  async openCarrito() {
+    const modal = await this.modalController.create({
+      component: CarritoComponent,
+      componentProps: { productos: this.carrito }
+    });
+    await modal.present();
   }
 
   contarItems() {
