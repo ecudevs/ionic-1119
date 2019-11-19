@@ -1,0 +1,32 @@
+<ion-list>
+  <ion-item>
+    <ion-label position="floating">Nombre producto</ion-label>
+    <ion-input [(ngModel)]="modelProducto.producto"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Categorias</ion-label>
+    <ion-select multiple="true" [(ngModel)]="modelProducto.categorias">
+      <ion-select-option
+        *ngFor="let categoria of categorias"
+        [value]="categoria._id"
+        selected
+        >{{ categoria.descripcion }}</ion-select-option
+      >
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Foto url</ion-label>
+    <ion-input [(ngModel)]="modelProducto.foto"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Precio</ion-label>
+    <ion-input [(ngModel)]="modelProducto.precio"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Stock</ion-label>
+    <ion-input [(ngModel)]="modelProducto.stock"></ion-input>
+  </ion-item>
+  <ion-button expand="block" color="danger" (click)="guardar()"
+    >Guardar
+  </ion-button>
+</ion-list>
