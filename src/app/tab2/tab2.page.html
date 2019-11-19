@@ -7,5 +7,7 @@
 </ion-header>
 
 <ion-content>
-  <app-producto-form></app-producto-form>
+  <app-producto-form
+    (guardarProducto)="guardarProducto($event)"
+  ></app-producto-form>
 </ion-content>
