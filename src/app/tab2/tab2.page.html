@@ -7,7 +7,17 @@
 </ion-header>
 
 <ion-content>
-  <app-producto-form
+  <!-- (eliminarClick)="" -->
+  <app-producto-list
+    [productos]="productos"
+    (editarClick)="showProductoForm($event)"
+  ></app-producto-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="showProductoForm()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <!-- <app-producto-form
     (guardarProducto)="guardarProducto($event)"
-  ></app-producto-form>
+  ></app-producto-form> -->
 </ion-content>

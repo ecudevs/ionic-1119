@@ -8,13 +8,22 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 export class ProductoListComponent implements OnInit {
   @Input() productos: any = [];
   @Output() productoClick = new EventEmitter<any>();
+  @Output() eliminarClick = new EventEmitter<any>();
+  @Output() editarClick = new EventEmitter<any>();
 
   constructor() {}
 
   ngOnInit() {}
 
   onClickProducto(producto) {
-    debugger;
     this.productoClick.next(producto);
+  }
+
+  onEditarClick(producto) {
+    this.editarClick.next(producto);
+  }
+
+  onEliminarClick(producto) {
+    this.eliminarClick.next(producto);
   }
 }

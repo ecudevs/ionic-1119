@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
-import { ToastController } from "@ionic/angular";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import { ToastController, ModalController } from "@ionic/angular";
 
 @Component({
   selector: "app-producto-form",
@@ -14,11 +14,14 @@ export class ProductoFormComponent implements OnInit {
     { _id: "VIDEO", descripcion: "VIDEO" }
   ];
 
-  modelProducto: any = {};
+  @Input() modelProducto: any = {};
 
   @Output() guardarProducto = new EventEmitter<any>();
 
-  constructor(public toastController: ToastController) {}
+  constructor(
+    public toastController: ToastController,
+    public modalController: ModalController
+  ) {}
 
   ngOnInit() {}
 
@@ -39,6 +42,7 @@ export class ProductoFormComponent implements OnInit {
       return false;
     }
 
+    this.modalController.dismiss(this.modelProducto);
     this.guardarProducto.next(this.modelProducto);
   }
 

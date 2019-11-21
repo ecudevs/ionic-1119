@@ -5,9 +5,25 @@
       class="ion-no-padding"
       size="6"
       size-sm
-      (click)="onClickProducto(producto)"
     >
-      <app-producto-card [producto]="producto"></app-producto-card>
+      <app-producto-card
+        (click)="onClickProducto(producto)"
+        [producto]="producto"
+      ></app-producto-card>
+      <div class="botonera">
+        <ion-button
+          expand="block"
+          color="primary"
+          (click)="onEditarClick(producto)"
+          >Editar
+        </ion-button>
+        <ion-button
+          expand="block"
+          color="danger"
+          (click)="onEliminarClick(producto)"
+          >Eliminar</ion-button
+        >
+      </div>
     </ion-col>
   </ion-row>
 </ion-grid>

@@ -14,4 +14,8 @@ export class ProductoService {
   insertarProducto(producto) {
     return this.http.post("http://localhost:9000/producto", producto);
   }
+
+  actualizarProducto(producto) {
+    return this.http.put("http://localhost:9000/producto", producto);
+  }
 }

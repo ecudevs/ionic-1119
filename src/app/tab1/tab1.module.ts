@@ -8,21 +8,17 @@ import { ProductoCardComponent } from "../producto/producto-card/producto-card.c
 import { ProductoListComponent } from "../producto/producto-list/producto-list.component";
 import { ProductoDetalleComponent } from "../producto/producto-detalle/producto-detalle.component";
 import { CarritoComponent } from "../producto/carrito/carrito.component";
+import { CommonComponentsModule } from "../common-components/common-components.module";
 
 @NgModule({
   imports: [
+    CommonComponentsModule,
     IonicModule,
     CommonModule,
     FormsModule,
     RouterModule.forChild([{ path: "", component: Tab1Page }])
   ],
-  declarations: [
-    Tab1Page,
-    ProductoCardComponent,
-    ProductoListComponent,
-    ProductoDetalleComponent,
-    CarritoComponent
-  ],
+  declarations: [Tab1Page, ProductoDetalleComponent, CarritoComponent],
   entryComponents: [ProductoDetalleComponent, CarritoComponent]
 })
 export class Tab1PageModule {}
