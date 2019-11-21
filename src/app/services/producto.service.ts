@@ -18,4 +18,8 @@ export class ProductoService {
   actualizarProducto(producto) {
     return this.http.put("http://localhost:9000/producto", producto);
   }
+
+  eliminarProducto(_id) {
+    return this.http.delete("http://localhost:9000/producto/" + _id);
+  }
 }

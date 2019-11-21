@@ -74,6 +74,27 @@ export class Tab2Page {
       );
   }
 
+  async eliminarProducto(_id) {
+    const loading = await this.loadingController.create({
+      spinner: "crescent",
+      message: "Por favor espere...",
+      translucent: true,
+      cssClass: "custom-class custom-loading" // podemos configurar estilos de clase
+    });
+    await loading.present();
+
+    this.productoService.eliminarProducto(_id).subscribe(
+      (response: any) => {
+        loading.dismiss();
+        this.showAlert("Eliminado");
+      },
+      error => {
+        loading.dismiss();
+        this.showAlert(error.message);
+      }
+    );
+  }
+
   async showAlert(mensaje) {
     const alert = await this.alertController.create({
       header: "Exito",
@@ -96,5 +117,25 @@ export class Tab2Page {
     if (data) {
       data._id ? this.modificarProducto(data) : this.guardarProducto(data);
     }
+  }
+
+  async showConfirmation(producto) {
+    const alert = await this.alertController.create({
+      header: "Confirmacion!",
+      message: "Estas seguro de eliminar este registro?",
+      buttons: [
+        {
+          text: "Cancelar",
+          role: "cancel",
+          cssClass: "secondary"
+        },
+        {
+          text: "Eliminar",
+          handler: () => this.eliminarProducto(producto._id)
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }

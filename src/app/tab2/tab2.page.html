@@ -7,9 +7,9 @@
 </ion-header>
 
 <ion-content>
-  <!-- (eliminarClick)="" -->
   <app-producto-list
     [productos]="productos"
+    (eliminarClick)="showConfirmation($event)"
     (editarClick)="showProductoForm($event)"
   ></app-producto-list>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
