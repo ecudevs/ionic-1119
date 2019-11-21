@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { ToastController, ModalController } from "@ionic/angular";
+import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
 
 @Component({
   selector: "app-producto-form",
@@ -20,7 +21,8 @@ export class ProductoFormComponent implements OnInit {
 
   constructor(
     public toastController: ToastController,
-    public modalController: ModalController
+    public modalController: ModalController,
+    private camera: Camera
   ) {}
 
   ngOnInit() {}
@@ -53,5 +55,25 @@ export class ProductoFormComponent implements OnInit {
       position: "bottom"
     });
     toast.present();
+  }
+
+  ejecutarCamara() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    };
+
+    this.camera.getPicture(options).then(
+      imageData => {
+        // imageData is either a base64 encoded string or a file URI
+        // If it's base64 (DATA_URL):
+        this.modelProducto.foto = "data:image/jpeg;base64," + imageData;
+      },
+      err => {
+        // Handle error
+      }
+    );
   }
 }

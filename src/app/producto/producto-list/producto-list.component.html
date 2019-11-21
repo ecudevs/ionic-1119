@@ -12,12 +12,14 @@
       ></app-producto-card>
       <div class="botonera">
         <ion-button
+          *ngIf="showEditar"
           expand="block"
           color="primary"
           (click)="onEditarClick(producto)"
           >Editar
         </ion-button>
         <ion-button
+          *ngIf="showEliminar"
           expand="block"
           color="danger"
           (click)="onEliminarClick(producto)"

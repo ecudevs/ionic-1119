@@ -11,9 +11,15 @@ export class ProductoListComponent implements OnInit {
   @Output() eliminarClick = new EventEmitter<any>();
   @Output() editarClick = new EventEmitter<any>();
 
+  showEliminar = false;
+  showEditar = false;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.showEliminar = this.eliminarClick.observers.length > 0;
+    this.showEditar = this.editarClick.observers.length > 0;
+  }
 
   onClickProducto(producto) {
     this.productoClick.next(producto);

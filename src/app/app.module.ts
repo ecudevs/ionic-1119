@@ -9,6 +9,8 @@ import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
+import { NativeStorage } from "@ionic-native/native-storage/ngx";
+import { Camera } from "@ionic-native/camera/ngx";
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +24,9 @@ import { HttpClientModule } from "@angular/common/http";
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    NativeStorage,
+    Camera
   ],
   bootstrap: [AppComponent]
 })

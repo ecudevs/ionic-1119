@@ -4,6 +4,8 @@ import { ProductoDetalleComponent } from "../producto/producto-detalle/producto-
 import { CarritoComponent } from "../producto/carrito/carrito.component";
 import { ProductoService } from "../services/producto.service";
 
+import { NativeStorage } from "@ionic-native/native-storage/ngx";
+
 @Component({
   selector: "app-tab1",
   templateUrl: "tab1.page.html",
@@ -20,14 +22,17 @@ export class Tab1Page {
 
   constructor(
     private productoService: ProductoService,
-    public modalController: ModalController
+    public modalController: ModalController,
+    private nativeStorage: NativeStorage
   ) {}
 
-  ionViewDidEnter() {
+  async ionViewDidEnter() {
     this.productoService.getProductos().subscribe((response: any) => {
       this.productos = response.productos;
       this.productosFiltrados = this.productos;
     });
+
+    this.carrito = await this.nativeStorage.getItem("carrito");
   }
 
   filtrar(e) {
@@ -51,6 +56,8 @@ export class Tab1Page {
 
     if (data) {
       this.carrito.push(data);
+      await this.nativeStorage.setItem("carrito", this.carrito);
+      console.log("Guardado Internamente");
       this.contarItems();
     }
   }

@@ -15,8 +15,9 @@
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Foto url</ion-label>
-    <ion-input [(ngModel)]="modelProducto.foto"></ion-input>
+    <ion-button expand="block" color="danger" (click)="ejecutarCamara()"
+      >Agregar foto
+    </ion-button>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Precio</ion-label>
